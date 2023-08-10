@@ -41,6 +41,6 @@ char properties(int n){
     }else if (cmd == 'n'){
         printf("Okay, Exiting...");
     }else{
-        printf("Invalid Command. Exiting...");
+        printf("Invalid Command. Exiting...\n");
     }
 }
