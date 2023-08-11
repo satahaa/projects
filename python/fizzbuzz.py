@@ -10,8 +10,25 @@ def fizzbuzz(n):
             print(i)
 
 def main(): #initiate main
-    i = int(input("Range? ").strip())
-    fizzbuzz(i)
+    while True: #Keep trying forever
+        try:
+            i = int(input("Range? ").strip()) # Get input from user
+            break #Break the loop after getting input
+        except ValueError: 
+            print("Invalid input! Please enter an integer.") #If the value is invalid retry
     
+    fizzbuzz(i)
+    x = input("Run again?(y/n) ").strip().lower() #Ask user if they want to initialise main again
+
+    if x == "y": #If yes call main
+        main()
+    elif x == "n": #Or else exit
+        print("Understood")
+        return 0
+    else:
+        print("Command not understood. Quiting...")
+        return 1
 
 main() #Call main
+
+# Test on 10,000 ints, Time : 19.01 seconds.
