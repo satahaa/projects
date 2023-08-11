@@ -7,13 +7,13 @@ int main(void) {
     int target;
     printf("Target? (0 to exit)\n");
     scanf("%d", &target);
-    getchar();
-    int size = sizeof(arr) / sizeof(arr[0]);
-    int ans = binsearch(arr, size, target);
+    getchar(); //Gets rid of the newline characters
+    int size = sizeof(arr) / sizeof(arr[0]); //Size here means binary size so when we divide the total size of an array with any member of the array we get the length of the array. 
+    int ans = binsearch(arr, size, target); //Calls my function
     if (ans != -1) {
         printf("In prime number list ranging to 10000, target: %d is in index %d\n", target, ans);
-        main();
     } else if (target == 0) {
+        main(); //Loops through the main function over and over again untill someone enters 0.
         printf("Exiting...\n");
     }else{
         printf("Not Found.\n");
@@ -28,13 +28,13 @@ int binsearch(int arr[], int size, int target) {
     while (start <= end) {
         int mid = (start + end) / 2;
         if (arr[mid] == target) {
-            return mid;
+            return mid; //If the target is found at the middle of the code the function return the index at that point.
         } else if (arr[mid] > target) {
-            end = mid - 1;
+            end = mid - 1; //If the target is less than what we found in the middle it adjusts its search parameter and looks for it in the left portion.
         } else {
-            start = mid + 1;
+            start = mid + 1; //Or vice-versa
         }
     }
 
-    return -1;
+    return -1; //If we dont find it we return -1
 }

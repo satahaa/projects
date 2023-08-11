@@ -1,24 +1,21 @@
 #include <stdio.h>
-#include <stdlib.h>
 
-void pyramid(int n);
-int main(int argc, char *argv[]){
-    if (argc != 2){
-        printf("invalid command");
-        return 1;
+int main(void){
+    int n;
+    printf("Height of the pyramid?\n");
+    scanf("%i", &n);
+    for(int i = 0; i <= n; i++){
+        for (int j = 0; j <= n-1; j++){
+            printf(" "); //Print spaces
+        }
+        
+        for (int k = 1; k <= i; k++){
+            printf("%i", k); //Print numbers in an ascending order
+        }
+    
+    printf("\n");
     }
-    int n = atoi(argv[1]);
-    pyramid(n);
+
 
     return 0;
-}
-
-void pyramid(int n){
-    for (int i = 1; i <= n ; i++){
-        for (int j = 1; j <= i; j++){
-            printf("%i", j);
-        }
-        printf("\n");
-    }
-    return;
 }
