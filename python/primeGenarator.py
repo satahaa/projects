@@ -1,4 +1,5 @@
 def primeNumbers(i):
+    #This is the Sieve of Erastothenes. The math behind it I still don't understand
     if i < 2:
         return []
     
@@ -13,6 +14,7 @@ def primeNumbers(i):
     return [num for num in range(2, i + 1) if sieve[num]]
 
 def binSearch(arr, target):
+    #look at binSearch.py to understand this function.
     start, end = 0 , len(arr)-1
     while start <= end:
         mid = (start+end)//2
@@ -24,16 +26,16 @@ def binSearch(arr, target):
             end = mid - 1
     return -1
 
-while True:
+while True: #Keep trying forever
     try:
-        inp = int(input("Prime number range: ").strip())
-        break
-    except ValueError:
-        print("Invalid input! Please enter an integer.")
-pnum = primeNumbers(inp)
+        inp = int(input("Prime number range: ").strip()) #Get the prime num range
+        break #Break the loop after getting input
+    except ValueError: 
+        print("Invalid input! Please enter an integer.") #If the value is invalid retry
+pnum = primeNumbers(inp) #Run through the function to get prime nums
 pnum_len = len(pnum)
 
-def runcommands():
+def runcommands(): #A chain of command line inputs which does different things given different inputs
     inp3 = input("Run commands?(y/n) ").strip()
     if inp3 == "y":
         inp4 = input("Query or Index?(q/i/exit) ").strip().lower()
@@ -66,11 +68,11 @@ def runcommands():
         runcommands()        
     
 print(f"There are {pnum_len} prime number in range {inp}") 
-inp1 = input("Would you like to see them? (y/n) ").strip().lower()
+inp1 = input("Would you like to see them? (y/n) ").strip().lower() #Only show them the list if they wanted to see it.
 if inp1 == "y":
     print(f"Here they are:\n{pnum}")
     runcommands()
 elif inp1 == "n":
     runcommands()
 else:
-    print("Invalid command(s). Exiting...")
+    print("Invalid command(s). Exiting...") 

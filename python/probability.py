@@ -6,6 +6,7 @@ D1 = {
     5 : 0.02,
     6 : 0.01
 }
+# These are two dices with weighted numbers.
 D2 = {
     1 : 0.04,
     2 : 0.15,
@@ -17,26 +18,27 @@ D2 = {
 def main():
     p1 = []
     p2 = []
-    while True:
+    while True: #Loop forever
         try:
-            key = int(input("what number?(0 to exit.) ").strip())
-            break
+            key = int(input("Input?(0 to exit.) ").strip()) #Get the input 
+            break #Break out of loop when you get an input.
         except ValueError:
-            print("The number must be an integer.")
-    if key == 0:
+            print("The number must be an integer.") #Retry if Value Errors
+    if key == 0: #Exit command
         print("Exiting...")
-        return 0
+        return 0 #Quit
     elif key <= 12 and key >= 2:
         for n1 in D1:
             for n2 in D2:
                 if n1 + n2 == key:
-                    p1.append(D1[n1])
+                    #Some crazy math happens which I am not going to get into
+                    p1.append(D1[n1]) 
                     p2.append(D2[n2])
         res = sum(p1[i]*p2[i] for i in range(len(p1)))
         rounded = round(round(res,3)*100, 3)
         print(f"Probsbility: {rounded}%")
         main()
     else:
-        print("The number must be between 2 and 12")
+        print("The number must be between 2 and 12") #Print if the user is an idiot or wants to fool around
         main()
 main()
