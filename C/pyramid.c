@@ -1,21 +1,21 @@
 #include <stdio.h>
 
-int main(void){
+int main(void) {
     int n;
-    printf("Height of the pyramid?\n");
-    scanf("%i", &n);
-    for(int i = 0; i <= n; i++){
-        for (int j = 0; j <= n-1; j++){
-            printf(" "); //Print spaces
+    printf("Height?\n"); //Ask user for height.
+    scanf("%d", &n);
+
+    for (int i = 1; i <= n; i++) {
+        for (int j = n - i; j > 0; j--) {
+            printf(" "); //Iterate to create whitespaces in descending order
         }
-        
-        for (int k = 1; k <= i; k++){
-            printf("%i", k); //Print numbers in an ascending order
+
+        for (int k = 1; k <= i; k++) {
+            printf("%d", k); //Print the numbers
         }
-    
-    printf("\n");
+
+        printf("\n");
     }
 
-
-    return 0;
+    return 0; //All done
 }
