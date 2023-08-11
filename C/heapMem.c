@@ -37,8 +37,6 @@ int main(void) {
         printf("%i\n", list[i]); // Print from 'list', which now holds the modified data
     }
 
-    // No need to free 'list' here, since 'tmp' has been assigned to it
-
     free(list); // Free the final allocated memory
 
     return 0;
