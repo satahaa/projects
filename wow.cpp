@@ -22,8 +22,7 @@ int calc(int top, int bottom)
     return sum;
 }
 void sol(int t)
-{   
-    cout << t + 1<< endl;     
+{    
     return;
 }
 int main()
