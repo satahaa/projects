@@ -12,18 +12,41 @@ typedef long long int i32;
 #define NO cout << "NO" << endl;
 #define pb push_back
 
-int calc(int top, int bottom)
-{
-    int sum = 0;
-    if (top > bottom)
-        for (int i = bottom; i <= top; i++)
-            if (i % 2 == 0)
-                sum += i;
-    return sum;
-}
 void sol(int t)
 {    
-    return;
+    int n; cin >> n;
+    string s; cin >> s;
+    unordered_map<char, int> freq;
+
+    // Count frequency of each character
+    for (char c : s) {
+        freq[c]++;
+    }
+
+    int cost = 0;
+    
+    // Separate counts for lowercase and uppercase
+    unordered_map<char, int> lower_counts;
+    unordered_map<char, int> upper_counts;
+
+    for (char c = 'a'; c <= 'z'; ++c) {
+        lower_counts[c] = freq[c];
+        upper_counts[toupper(c)] = freq[toupper(c)];
+    }
+
+    // Calculate the minimal cost to make it palindrome
+    for (char c = 'a'; c <= 'z'; ++c) {
+        char lc = c;
+        char uc = toupper(c);
+        int pairs = min(lower_counts[lc], upper_counts[uc]);
+        int remaining_lower = lower_counts[lc] - pairs;
+        int remaining_upper = upper_counts[uc] - pairs;
+
+        // Cost of converting remaining_lower and remaining_upper to pairs
+        cost += (remaining_lower + remaining_upper) * 2; // Change cost 2 per change
+    }
+
+    cout << cost << endl;
 }
 int main()
 {

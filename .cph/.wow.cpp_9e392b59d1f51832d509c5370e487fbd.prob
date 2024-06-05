@@ -1,0 +1,1 @@
+{"name":"Local: wow","url":"e:\\vscode\\wow.cpp","tests":[{"id":1715620424218,"input":"7\n4\nAcbb\n11\nabcBaaadekE\n6\noOokKk\n10\npalindroMe\n7\nPhiTron\n10\ncoDefOrceS\n6\npppppp","output":"2\n4\n2\n10\n6\n5\n0"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\vscode\\wow.cpp","group":"local","local":true}
