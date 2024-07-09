@@ -62,5 +62,12 @@
     "c": "cd /mnt$dir && gcc $fileName -o ./build/debug/$fileNameWithoutExt && ./build/debug/$fileNameWithoutExt",
     "cpp": "cd /mnt$dir && g++ $fileName -o ./build/debug/$fileNameWithoutExt && ./build/debug/$fileNameWithoutExt",
     "python": "cd /mnt$dir && python3 -u ./$fileName"
-  }
+  },
+  "leetcode.hideSolved": false,
+  "leetcode.defaultLanguage": "python3",
+  "leetcode.editor.shortcuts": [
+    "submit, test, solution, description"
+  ],
+  "leetcode.workspaceFolder": "E:\\vscode\\leetcode",
+  "leetcode.filePath": "./wow.py"
 }

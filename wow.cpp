@@ -3,23 +3,31 @@ using namespace std;
 typedef long long int i32;
 #define endl '\n'
 #define l(i, n) for (int i = 0; i < n; i++)
-#define sortall(a) sort(a.begin(), a.end())
-#define revall(a) reverse(a.begin(), a.end())
+#define sorted(a) sort(a.begin(), a.end())
+#define reversed(a) reverse(a.begin(), a.end())
+#define all(x) x.begin(), x.end()
 #define MOD 1e9 + 7
-#define YES cout << "YES" << endl;
-#define NO cout << "NO" << endl;
+#define YES cout << "YES" << endl
+#define NO cout << "NO" << endl
 #define pb push_back
 const int di[] = {-1, 1, 0, 0};
 const int dj[] = {0, 0, -1, 1};
 
 void sol(int tc) {
-    int n, k; cin >> n >> k;
-    if (k == 1) {
-        cout << n << endl;
-        return;
+    int n; cin >> n;
+    vector<int> a(n);
+    int sum  = 0;
+    bool e = false, o = false;    
+    l (i, n) {
+        cin >> a[i];
+        sum += a[i];
+        if (a[i] % 2 == 0) e = true;
+        else o = true;
     }
+    if ((sum % 2 != 0) or (o and e))
+        YES;
+    else NO;
 
-    cout << n + k - 1<< endl;
     return;
 }
 int main() {
