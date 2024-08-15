@@ -14,24 +14,10 @@ typedef long long int i32;
 #define pb push_back
 const int di[] = {-1, 1, 0, 0};
 const int dj[] = {0, 0, -1, 1};
-
+   
 void sol(int tc) {
-    int n; cin >> n;
-    unordered_map<char, int> mp{
-        {'A' , 0},
-        {'B', 0},
-        {'C', 0},
-        {'D', 0}
-    };
-    string s; cin >> s;
-    for (char c : s) if (c != '?') mp[c]++;
-    int ans = 0;
-    for (auto& p : mp) {
-        if (p.second > n)
-            ans += n;
-        else ans += p.second;
-    }
-    cout << ans << endl;
+    i32 a, b, c, d; cin >> a >> b >> c >> d;
+    return;
 }
 int main() {
     ios_base::sync_with_stdio(false);
