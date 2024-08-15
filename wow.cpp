@@ -16,7 +16,9 @@ const int di[] = {-1, 1, 0, 0};
 const int dj[] = {0, 0, -1, 1};
    
 void sol(int tc) {
-    i32 a, b, c, d; cin >> a >> b >> c >> d;
+    int a, b, c; cin >> a >> b >> c;
+    if (a <= b and a <= c) YES;
+    else NO;
     return;
 }
 int main() {
@@ -25,7 +27,7 @@ int main() {
     cout.tie(nullptr);
 
     int tc = 1;
-    cin >> tc;
+    //cin >> tc;
     for (int i = 1; i <= tc; i++)
         sol(i);
     return 0;
