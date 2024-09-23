@@ -61,7 +61,8 @@
   "code-runner.executorMap": {
     "c": "cd /mnt$dir && gcc $fileName -o ./build/debug/$fileNameWithoutExt && ./build/debug/$fileNameWithoutExt",
     "cpp": "cd /mnt$dir && g++ $fileName -o ./build/debug/$fileNameWithoutExt && ./build/debug/$fileNameWithoutExt",
-    "python": "cd /mnt$dir && python3 -u ./$fileName"
+    "python": "cd /mnt$dir && python3 -u ./$fileName",
+    "kotlin": "cd /mnt$dir && kotlinc $fileName -include-runtime -d ./build/debug/$fileNameWithoutExt.jar && java -jar ./build/debug/$fileNameWithoutExt.jar"
   },
   "leetcode.hideSolved": false,
   "leetcode.defaultLanguage": "python3",
