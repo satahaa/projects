@@ -14,17 +14,15 @@ typedef long long int i32;
 #define pb push_back
 constexpr int di[] = {-1, 1, 0, 0};
 constexpr int dj[] = {0, 0, -1, 1};
-i32 fact(int n) {
-    vector<int> a(n + 1);
-    a[0] = 1;
-    a[1] = 1;
-    for (int i = 2; i <= n; i++) a[i] = a[i - 1] * i;
 
-    return a[n];
-}
 void sol(int tc) {
-    int a, b; cin >> a >> b;
-    cout << fact(min(a, b)) << endl;
+    int a, b, c, x, y; cin >> a >> b >> c >> x >> y;
+    x -= a;
+    y -= b;
+    if (x < 0) x = 0;
+    if (y < 0) y = 0;
+    if ((x + y) - c <= 0) YES;
+    else NO;
 
     return;
 }
@@ -34,7 +32,7 @@ int main() {
     cout.tie(nullptr);
 
     int tc = 1;
-    //cin >> tc;
+    cin >> tc;
     for (int i = 1; i <= tc; i++)
         sol(i);
     return 0;
