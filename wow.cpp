@@ -14,26 +14,21 @@ typedef long long int i32;
 #define pb push_back
 constexpr int di[] = {-1, 1, 0, 0};
 constexpr int dj[] = {0, 0, -1, 1};
+string itos(int n) {
+    stringstream ss;
+    ss << n;
+    return ss.str();
+}
 
 void sol(int tc) {
-    int n, k; cin >> n >> k;
-    vector<int> a(k);
-    l (i, k) cin >> a[i];
-    
-    sorted(a);
-    int i = 0;
-    int sum = 0;
+    int n; cin >> n;
 
-    l (i, k - 1) {
-        if (a[i] == 1) sum++;
-        else if (a[i] > 1) {
-            sum += a[i];
-            sum += (a[i] - 1);
-        }
+    if (n % 7 == 0) {cout << n << endl; return;}
+    n -= n % 10;
+    l (i, 10) {
+        if (n % 7 == 0) {cout << n << endl; return;}
+        n++;
     }
-
-    cout << sum << endl;
-
 
     return;
 }
