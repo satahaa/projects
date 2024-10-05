@@ -16,20 +16,24 @@ constexpr int di[] = {-1, 1, 0, 0};
 constexpr int dj[] = {0, 0, -1, 1};
 
 void sol(int tc) {
-    int n; cin >> n;
-    string s; cin >> s;
+    int n, k; cin >> n >> k;
+    vector<int> a(k);
+    l (i, k) cin >> a[i];
+    
+    sorted(a);
+    int i = 0;
+    int sum = 0;
 
-    string a = "";
-    for (int i = 0; i < n;) {
-        const char cc = s[i];
-        a += cc;
-
-        int j = i + 1;
-        while (j < n && s[j] != cc) j++;
-        i = j + 1;
+    l (i, k - 1) {
+        if (a[i] == 1) sum++;
+        else if (a[i] > 1) {
+            sum += a[i];
+            sum += (a[i] - 1);
+        }
     }
 
-    cout << a << endl;
+    cout << sum << endl;
+
 
     return;
 }
