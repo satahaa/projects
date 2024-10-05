@@ -12,12 +12,25 @@ typedef long long int i32;
 #define YES cout << "YES" << endl
 #define NO cout << "NO" << endl
 #define pb push_back
-const int di[] = {-1, 1, 0, 0};
-const int dj[] = {0, 0, -1, 1};
-   
+constexpr int di[] = {-1, 1, 0, 0};
+constexpr int dj[] = {0, 0, -1, 1};
+
 void sol(int tc) {
+    int n; cin >> n;
     string s; cin >> s;
-    cout << (s[0] - '0') + (s[1] - '0') << endl;
+
+    string a = "";
+    for (int i = 0; i < n;) {
+        const char cc = s[i];
+        a += cc;
+
+        int j = i + 1;
+        while (j < n && s[j] != cc) j++;
+        i = j + 1;
+    }
+
+    cout << a << endl;
+
     return;
 }
 int main() {
