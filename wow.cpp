@@ -16,12 +16,23 @@ constexpr int di[] = {-1, 1, 0, 0};
 constexpr int dj[] = {0, 0, -1, 1};
 
 void sol(int tc) {
-    int a, b; cin >> a >> b;
-    if ((a + 2 * b) % 2 == 0) {
-        int h = (a + 2 * b) / 2;
-        (h % 2 == 0 or (h % 2 == 1 and a >= 1)) ? YES : NO;
+    int n; cin >> n;
+    vector<int> a(n);
+    int sm = 0;
+    l (i, n) {cin >> a[i]; sm += a[i];}
+
+    if (sm % 3 == 0) {cout << 0; return;}
+    l (i, n) {
+        int k = sm - a[i];
+        if (k % 3 == 0) {cout << 1; return;}
     }
-    else NO;
+    int m = 0;
+    while (sm % 3 != 0) {
+        sm++;
+        m++;
+    }
+    cout << m;
+
     return;
 }
 int main() {
