@@ -16,12 +16,12 @@ constexpr int di[] = {-1, 1, 0, 0};
 constexpr int dj[] = {0, 0, -1, 1};
 
 void sol(int tc) {
-    int n; cin >> n;
-    if (n == 1) {
-        cout << 2 << endl;
-        return;
+    int a, b; cin >> a >> b;
+    if ((a + 2 * b) % 2 == 0) {
+        int h = (a + 2 * b) / 2;
+        (h % 2 == 0 or (h % 2 == 1 and a >= 1)) ? YES : NO;
     }
-    cout << ((n/3) + (bool)(n % 3)) << endl;
+    else NO;
     return;
 }
 int main() {
