@@ -1,7 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long int i32;
-#define endl '\n'
+#define nl '\n'
+#define spc ' '
 #define l(i, n) for (int i = 0; i < n; i++)
 #define sorted(a) sort(a.begin(), a.end())
 #define rsorted(a) sort(a.rbegin(), a.rend())
@@ -17,22 +18,23 @@ constexpr int dj[] = {0, 0, -1, 1};
 
 void sol(int tc) {
     int n; cin >> n;
-    vector<int> a(n);
-    int sm = 0;
-    l (i, n) {cin >> a[i]; sm += a[i];}
-
-    if (sm % 3 == 0) {cout << 0; return;}
+    vector<int> a(n), b, c; l(i, n) cin >> a[i];
+    sorted(a);
+    
+    int m = a[0];
     l (i, n) {
-        int k = sm - a[i];
-        if (k % 3 == 0) {cout << 1; return;}
+        if (a[i] == m) b.pb(a[i]);
+        else c.pb(a[i]);
     }
-    int m = 0;
-    while (sm % 3 != 0) {
-        sm++;
-        m++;
-    }
-    cout << m;
 
+    if (!b.empty() and !c.empty()) {
+        cout << b.size() << spc << c.size() << nl;
+        l (i, b.size()) cout << b[i] << spc;
+        cout << nl;
+        l (i, c.size()) cout << c[i] << spc;
+    }
+    else cout << -1;
+ 
     return;
 }
 int main() {
