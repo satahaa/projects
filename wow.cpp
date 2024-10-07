@@ -18,23 +18,19 @@ constexpr int dj[] = {0, 0, -1, 1};
 
 void sol(int tc) {
     int n; cin >> n;
-    vector<int> a(n), b, c; l(i, n) cin >> a[i];
-    sorted(a);
-    
-    int m = a[0];
-    l (i, n) {
-        if (a[i] == m) b.pb(a[i]);
-        else c.pb(a[i]);
-    }
+    vector<int> a(n); l (i, n) cin >> a[i];
+    unordered_map<int, bool> mp;
+    mp[a[0]] = true;
 
-    if (!b.empty() and !c.empty()) {
-        cout << b.size() << spc << c.size() << nl;
-        l (i, b.size()) cout << b[i] << spc;
-        cout << nl;
-        l (i, c.size()) cout << c[i] << spc;
+    for (int i = 1; i < n; i++) {
+        if (mp[a[i] + 1] and mp[a[i] - 1]) {
+            NO;
+            return;
+        }
+        else mp[a[i]] = true;
     }
-    else cout << -1;
- 
+    YES;
+
     return;
 }
 int main() {
@@ -45,6 +41,6 @@ int main() {
     int tc = 1;
     cin >> tc;
     for (int i = 1; i <= tc; i++)
-        {sol(i); cout << endl;}
+        {sol(i); cout << nl;}
     return 0;
 }
