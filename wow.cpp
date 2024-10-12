@@ -17,23 +17,21 @@ constexpr int di[] = {-1, 1, 0, 0};
 constexpr int dj[] = {0, 0, -1, 1};
 
 void sol(int tc) {
-    int n, m, rb, cb, rd, cd;
-    cin >> n >> m >> rb >> cb >> rd >> cd;
+    int a, b, c;
+    cin >> a >> b >> c;
 
-    int r;
-    if (rd >= rb) 
-        r = rd - rb;
-    else 
-        r = (n - rb) + (n - rd);
-    
-    int c;
-    if (cd >= cb) 
-        c = cd - cb;
-    else 
-        c = (m - cb) + (m - cd);
-    
+    int sticks[3] = {a, b, c};
+    sort(sticks, sticks + 3);
 
-    cout << min(r, c) << endl;
+    if (sticks[0] == sticks[1] && sticks[2] % 2 == 0)
+        YES;
+    else if (sticks[1] == sticks[2] && sticks[0] % 2 == 0)
+        YES;
+    else if (sticks[0] + sticks[1] == sticks[2])
+        YES;
+    else
+        NO;
+
     return;
 }
 
