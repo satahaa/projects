@@ -8,7 +8,7 @@ typedef long long int i32;
 #define rsorted(a) sort(a.rbegin(), a.rend())
 #define reversed(a) reverse(a.begin(), a.end())
 #define all(x) x.begin(), x.end()
-#define rall(x) x.rbegin(). x.rend()
+#define rall(x) x.rbegin(), x.rend()
 #define MOD 1e9 + 7
 #define YES cout << "YES"
 #define NO cout << "NO"
@@ -17,22 +17,29 @@ constexpr int di[] = {-1, 1, 0, 0};
 constexpr int dj[] = {0, 0, -1, 1};
 
 void sol(int tc) {
-    int n; cin >> n;
-    vector<int> a(n); l (i, n) cin >> a[i];
-    unordered_map<int, bool> mp;
-    mp[a[0]] = true;
-
-    for (int i = 1; i < n; i++) {
-        if (mp[a[i] + 1] and mp[a[i] - 1]) {
-            NO;
+    int n, m, rb, cb, rd, cd;
+    cin >> n >> m >> rb >> cb >> rd >> cd;
+    int t = 0;
+    int dr = 1, dc = 1;
+    if (rb == rd or cb == cd) {
+        cout << t;
+        return;
+    }
+    while (true) {
+        t++;
+        rb += dr;
+        cb += dc;
+        if (rb == rd or cb == cd) {
+            cout << t;
             return;
         }
-        else mp[a[i]] = true;
+        if (rb >= n or rb <= 1) dr *= -1; 
+        if (cb >= m or cb <= 1) dc *= -1;
     }
-    YES;
 
     return;
 }
+
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
@@ -40,7 +47,9 @@ int main() {
 
     int tc = 1;
     cin >> tc;
-    for (int i = 1; i <= tc; i++)
-        {sol(i); cout << nl;}
+    for (int i = 1; i <= tc; i++) {
+        sol(i);
+        cout << '\n';
+    }
     return 0;
 }
