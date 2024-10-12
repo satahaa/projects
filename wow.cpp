@@ -17,14 +17,13 @@ constexpr int di[] = {-1, 1, 0, 0};
 constexpr int dj[] = {0, 0, -1, 1};
 
 void sol(int tc) {
-    string s; cin >> s;
-    int c = 0;
-    l (i, s.size()) c += s[i] == 'N';
-    if (c != 1) YES;
-    else NO;
-    return;
+    int n;
+    cin >> n;
+    int a = sqrt(n);
+    int b = cbrt(n);
+    int c = sqrt(cbrt(n));
+    cout << a + b - c;
 }
-
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
