@@ -17,21 +17,11 @@ constexpr int di[] = {-1, 1, 0, 0};
 constexpr int dj[] = {0, 0, -1, 1};
 
 void sol(int tc) {
-    int n, k;
-    cin >> n >> k;
-    if (k > ceil((double) n / 2)) {
-        cout << -1;
-        return;
-    }
-    l (i, n) {
-        l (j, n) {
-            if (i == j and i % 2 == 0 and k > 0) {cout << "R"; k--;}
-            else cout << ".";
-            
-        }
-        cout << " \n"[i != n - 1];
-    }
-    
+    string s; cin >> s;
+    int c = 0;
+    l (i, s.size()) c += s[i] == 'N';
+    if (c != 1) YES;
+    else NO;
     return;
 }
 
