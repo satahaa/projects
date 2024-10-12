@@ -17,21 +17,21 @@ constexpr int di[] = {-1, 1, 0, 0};
 constexpr int dj[] = {0, 0, -1, 1};
 
 void sol(int tc) {
-    int a, b, c;
-    cin >> a >> b >> c;
-
-    int sticks[3] = {a, b, c};
-    sort(sticks, sticks + 3);
-
-    if (sticks[0] == sticks[1] && sticks[2] % 2 == 0)
-        YES;
-    else if (sticks[1] == sticks[2] && sticks[0] % 2 == 0)
-        YES;
-    else if (sticks[0] + sticks[1] == sticks[2])
-        YES;
-    else
-        NO;
-
+    int n, k;
+    cin >> n >> k;
+    if (k > ceil((double) n / 2)) {
+        cout << -1;
+        return;
+    }
+    l (i, n) {
+        l (j, n) {
+            if (i == j and i % 2 == 0 and k > 0) {cout << "R"; k--;}
+            else cout << ".";
+            
+        }
+        cout << " \n"[i != n - 1];
+    }
+    
     return;
 }
 
