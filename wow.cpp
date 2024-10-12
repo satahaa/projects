@@ -19,24 +19,21 @@ constexpr int dj[] = {0, 0, -1, 1};
 void sol(int tc) {
     int n, m, rb, cb, rd, cd;
     cin >> n >> m >> rb >> cb >> rd >> cd;
-    int t = 0;
-    int dr = 1, dc = 1;
-    if (rb == rd or cb == cd) {
-        cout << t;
-        return;
-    }
-    while (true) {
-        t++;
-        rb += dr;
-        cb += dc;
-        if (rb == rd or cb == cd) {
-            cout << t;
-            return;
-        }
-        if (rb >= n or rb <= 1) dr *= -1; 
-        if (cb >= m or cb <= 1) dc *= -1;
-    }
 
+    int r;
+    if (rd >= rb) 
+        r = rd - rb;
+    else 
+        r = (n - rb) + (n - rd);
+    
+    int c;
+    if (cd >= cb) 
+        c = cd - cb;
+    else 
+        c = (m - cb) + (m - cd);
+    
+
+    cout << min(r, c) << endl;
     return;
 }
 
