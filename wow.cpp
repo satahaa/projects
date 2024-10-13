@@ -17,19 +17,35 @@ constexpr int di[] = {-1, 1, 0, 0};
 constexpr int dj[] = {0, 0, -1, 1};
 
 void sol(int tc) {
-    int n;
+    int n; 
     cin >> n;
-    int a = sqrt(n);
-    int b = cbrt(n);
-    int c = sqrt(cbrt(n));
-    cout << a + b - c;
+    vector<string> bigrams(n - 2);
+    for (int i = 0; i < n - 2; ++i) {
+        cin >> bigrams[i];
+    }
+
+    string result = bigrams[0];
+    for (int i = 1; i < n - 2; ++i) {
+        if (bigrams[i][0] != result.back()) {
+            result += bigrams[i];
+        } else {
+            result += bigrams[i][1];
+        }
+    }
+
+    if (result.size() < n) {
+        result += 'a'; // or 'b', since the answer exists
+    }
+
+    cout << result;
 }
+
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
     cout.tie(nullptr);
 
-    int tc = 1;
+    int tc;
     cin >> tc;
     for (int i = 1; i <= tc; i++) {
         sol(i);
