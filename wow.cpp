@@ -17,27 +17,20 @@ constexpr int di[] = {-1, 1, 0, 0};
 constexpr int dj[] = {0, 0, -1, 1};
 
 void sol(int tc) {
-    int n; 
-    cin >> n;
-    vector<string> bigrams(n - 2);
-    for (int i = 0; i < n - 2; ++i) {
-        cin >> bigrams[i];
-    }
+    vector<int> arr(7);
+    l (i, 7) cin >> arr[i];
 
-    string result = bigrams[0];
-    for (int i = 1; i < n - 2; ++i) {
-        if (bigrams[i][0] != result.back()) {
-            result += bigrams[i];
-        } else {
-            result += bigrams[i][1];
+    int a = arr[0];
+    int b = arr[1];
+    int k = arr[6] - arr[0];
+    int c;
+    for (int i = 2; i < 7; i++) 
+        if (arr[i] == k - b) {
+            c = arr[i];
+            break;
         }
-    }
-
-    if (result.size() < n) {
-        result += 'a'; // or 'b', since the answer exists
-    }
-
-    cout << result;
+    cout << a << spc << b << spc << c;
+    
 }
 
 int main() {
