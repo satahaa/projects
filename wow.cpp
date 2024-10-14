@@ -17,20 +17,26 @@ constexpr int di[] = {-1, 1, 0, 0};
 constexpr int dj[] = {0, 0, -1, 1};
 
 void sol(int tc) {
-    vector<int> arr(7);
-    l (i, 7) cin >> arr[i];
+    string s, t;
+    cin >> s >> t;
+    map<char, int> mp;
+    for (const char &c : s) mp[c]++;
+    sorted(s);
 
-    int a = arr[0];
-    int b = arr[1];
-    int k = arr[6] - arr[0];
-    int c;
-    for (int i = 2; i < 7; i++) 
-        if (arr[i] == k - b) {
-            c = arr[i];
-            break;
-        }
-    cout << a << spc << b << spc << c;
-    
+    if (t != "abc" || mp['a'] == 0 || mp['b'] == 0 || mp['c'] == 0) {
+        cout << s;
+        return;
+    }
+
+    string ans = "";
+    l (i, mp['a']) ans += 'a';
+    l (i, mp['c']) ans += 'c';
+    l (i, mp['b']) ans += 'b';
+    for (const auto& p : mp) {
+        if (p.first > 'c')
+            l (i, p.second) ans += p.first;
+    }
+    cout << ans;
 }
 
 int main() {
