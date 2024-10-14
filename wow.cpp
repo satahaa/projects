@@ -17,19 +17,20 @@ constexpr int di[] = {-1, 1, 0, 0};
 constexpr int dj[] = {0, 0, -1, 1};
 
 void sol(int tc) {
-    int n; cin >> n;
-    unordered_map<int, int> mp;
-    l(i, n) {
-        int x; cin >> x;
-        mp[abs(x)]++;
+        string s, t;
+    cin >> s >> t;
+    const string m = s.size() > t.size() ? s : t; //biggest
+    const string n = s.size() > t.size() ? t : s; //smallest
+    const int a = n.size();
+    const int b = m.size();
+    int i = 0;
+    while (i < a) {
+        if (n[i] != m[i]) break;
+        i++;
     }
-    int ans = 0;
-
-    for (auto &x : mp) {
-        if (x.second > 1 and x.first != 0) ans += 2;
-        else ans++;
-    }
-
+    int ans;
+    if (i > 0) ans = a + b + 1 - i;
+    else ans = a + b;
     cout << ans;
 }
 int main() {
