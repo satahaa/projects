@@ -17,28 +17,21 @@ constexpr int di[] = {-1, 1, 0, 0};
 constexpr int dj[] = {0, 0, -1, 1};
 
 void sol(int tc) {
-    string s, t;
-    cin >> s >> t;
-    map<char, int> mp;
-    for (const char &c : s) mp[c]++;
-    sorted(s);
+    int n; cin >> n;
+    unordered_map<int, int> mp;
+    l(i, n) {
+        int x; cin >> x;
+        mp[abs(x)]++;
+    }
+    int ans = 0;
 
-    if (t != "abc" || mp['a'] == 0 || mp['b'] == 0 || mp['c'] == 0) {
-        cout << s;
-        return;
+    for (auto &x : mp) {
+        if (x.second > 1 and x.first != 0) ans += 2;
+        else ans++;
     }
 
-    string ans = "";
-    l (i, mp['a']) ans += 'a';
-    l (i, mp['c']) ans += 'c';
-    l (i, mp['b']) ans += 'b';
-    for (const auto& p : mp) {
-        if (p.first > 'c')
-            l (i, p.second) ans += p.first;
-    }
     cout << ans;
 }
-
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
