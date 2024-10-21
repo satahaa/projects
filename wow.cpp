@@ -9,7 +9,7 @@ typedef long long int i32;
 #define reversed(a) reverse(a.begin(), a.end())
 #define all(x) x.begin(), x.end()
 #define rall(x) x.rbegin(), x.rend()
-#define MOD 1e9 + 7
+#define MOD 1000000007
 #define YES cout << "YES"
 #define NO cout << "NO"
 #define pb push_back
@@ -17,29 +17,36 @@ constexpr int di[] = {-1, 1, 0, 0};
 constexpr int dj[] = {0, 0, -1, 1};
 
 void sol(int tc) {
-        string s, t;
-    cin >> s >> t;
-    const string m = s.size() > t.size() ? s : t; //biggest
-    const string n = s.size() > t.size() ? t : s; //smallest
-    const int a = n.size();
-    const int b = m.size();
-    int i = 0;
-    while (i < a) {
-        if (n[i] != m[i]) break;
-        i++;
+    i32 n, t;
+    cin >> n >> t; 
+
+    vector<i32> cooking(n);
+    for (i32 i = 0; i < n; ++i) cin >> cooking[i]; 
+  
+    sorted(cooking);
+
+    i32 count = 0;
+    i32 total = 0;
+
+    for (i32 i = 0; i < n; ++i) {
+        if (total + cooking[i] <= t) {
+            total += cooking[i];
+            count++;
+        } 
+        else break;  
     }
-    int ans;
-    if (i > 0) ans = a + b + 1 - i;
-    else ans = a + b;
-    cout << ans;
+
+    cout << count; 
 }
+
+
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
     cout.tie(nullptr);
 
-    int tc;
-    cin >> tc;
+    int tc = 1;
+    //cin >> tc;
     for (int i = 1; i <= tc; i++) {
         sol(i);
         cout << '\n';
