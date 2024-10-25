@@ -1,8 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long int i32;
-#define nl '\n'
-#define spc ' '
 #define l(i, n) for (int i = 0; i < n; i++)
 #define sorted(a) sort(a.begin(), a.end())
 #define rsorted(a) sort(a.rbegin(), a.rend())
@@ -12,33 +10,39 @@ typedef long long int i32;
 #define MOD 1000000007
 #define YES cout << "YES"
 #define NO cout << "NO"
+#define spc ' '
 #define pb push_back
 constexpr int di[] = {-1, 1, 0, 0};
 constexpr int dj[] = {0, 0, -1, 1};
 
 void sol(int tc) {
-    i32 n, t;
-    cin >> n >> t; 
+    int q; cin >> q;
+    while (q--) {
+        i32 n, m, o, p;
+        cin >> n >> m >> o >> p;
+        i32 ans = 0;
 
-    vector<i32> cooking(n);
-    for (i32 i = 0; i < n; ++i) cin >> cooking[i]; 
-  
-    sorted(cooking);
+        vector<i32> powersOf2(m - n + 1);
+        vector<i32> powersOf3(p - o + 1);
 
-    i32 count = 0;
-    i32 total = 0;
+        powersOf2[0] = 1;  // 2^0
+        for (int i = 1; i <= m - n; ++i) {
+            powersOf2[i] = (powersOf2[i - 1] * 2) % MOD;
+        }
 
-    for (i32 i = 0; i < n; ++i) {
-        if (total + cooking[i] <= t) {
-            total += cooking[i];
-            count++;
-        } 
-        else break;  
+        powersOf3[0] = 1;  // 3^0
+        for (int j = 1; j <= p - o; ++j) {
+            powersOf3[j] = (powersOf3[j - 1] * 3) % MOD;
+        }
+
+        l (i, m - n + 1) {
+            l (j, p - o + 1) {
+                ans = (ans + (powersOf2[i] * powersOf3[j]) % MOD) % MOD;
+            }
+        }
+        cout << 2 * ans << spc;
     }
-
-    cout << count; 
 }
-
 
 int main() {
     ios_base::sync_with_stdio(false);
