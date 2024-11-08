@@ -13,7 +13,7 @@
                 ""
             ],
             "options": {
-                "cwd": "C:/msys64/ucrt64/bin"
+                "cwd": "E:/msys2/ming64/bin"
             },
             "problemMatcher": [
                 "$gcc"
