@@ -21,19 +21,38 @@ constexpr int di[] = {-1, 1, 0, 0};
 constexpr int dj[] = {0, 0, -1, 1};
 
 void sol(int tc) {
-    int n, c;
-    cin >> n >> c;
-    vector<int> a(n);
-    l(i, n) cin >> a[i];
-    int k = a[0];
-    int cnt = 0;
-    for (int i = 1; i < n; i++) {
-        if (abs(a[i] - k) >= c) {
-            cnt++;
-            k = a[i];
+    int n;
+    cin >> n;
+    vector<int> a(n), b(n - 1);
+    l (i, n) cin >> a[i];
+    l (i, n - 1) cin >> b[i];
+    sorted(a); sorted(b);
+
+    int l = 1, r = 1e9;
+    int ans = -1;
+    while (l <= r) {
+        int m = l + (r - l) / 2;
+        
+        vector<int> t = b;
+        t.push_back(m);
+        sorted(t);
+        
+        bool f = true;
+        l (i, n)
+            if (a[i] > t[i]) {
+                f = false;
+                break;
+            }
+        
+        if (f) {
+            ans = m;
+            r = m - 1;
         }
+        else l = m + 1;
     }
-    cout << cnt + 1 << nl;
+
+    cout << ans << endl;
+
 
 }
  
