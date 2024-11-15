@@ -23,16 +23,28 @@ constexpr int dj[] = {0, 0, -1, 1};
 void sol(int tc) {
     int n;
     cin >> n;
-    vector<int> a(n); 
+    vector<int> a(n);
     l(i, n) cin >> a[i];
  
-    unordered_map<int, int> f;
-
-    for (int n : a) f[n]++;
-    int m = f[a[0]];
+    bool p = true;
  
-    for (const auto& e : f) m = max(m, e.nd);
-    cout << n - m << nl;
+    l (i, n - 1) {
+        bool swapped = false;
+        l (j, n - i - 1) {
+            if (abs(a[j] - a[j + 1]) != 1 && a[j] > a[j + 1]) {
+                p = false;
+                break;
+            }
+            if (a[j] > a[j + 1]) {
+                swap(a[j], a[j + 1]);
+                swapped = true;
+            }
+        }
+        if (!swapped) break;
+        if (!p) break;  
+    }
+ 
+    p ? YES : NO;
 }
  
 int main() {
