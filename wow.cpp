@@ -23,37 +23,28 @@ constexpr int dj[] = {0, 0, -1, 1};
 void sol(int tc) {
     int n;
     cin >> n;
-    vector<int> a(n), b(n - 1);
-    l (i, n) cin >> a[i];
-    l (i, n - 1) cin >> b[i];
-    sorted(a); sorted(b);
+    vector<int> a(n);
+    l(i, n) cin >> a[i];
 
-    int l = 1, r = 1e9;
-    int ans = -1;
-    while (l <= r) {
-        int m = l + (r - l) / 2;
-        
-        vector<int> t = b;
-        t.push_back(m);
-        sorted(t);
-        
-        bool f = true;
-        l (i, n)
-            if (a[i] > t[i]) {
-                f = false;
+    bool p = true;
+
+    l (i, n - 1) {
+        bool swapped = false;
+        l (j, n - i - 1) {
+            if (abs(a[j] - a[j + 1]) != 1 && a[j] > a[j + 1]) {
+                p = false;
                 break;
             }
-        
-        if (f) {
-            ans = m;
-            r = m - 1;
+            if (a[j] > a[j + 1]) {
+                swap(a[j], a[j + 1]);
+                swapped = true;
+            }
         }
-        else l = m + 1;
+        if (!swapped) break;
+        if (!p) break;  
     }
 
-    cout << ans << endl;
-
-
+    p ? YES : NO;
 }
  
 int main() {
@@ -62,7 +53,7 @@ int main() {
     cout.tie(nullptr);
  
     int tc = 1;
-    //cin >> tc;
+    cin >> tc;
     for (int i = 1; i <= tc; i++) {
         sol(i);
     }
