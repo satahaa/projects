@@ -25,32 +25,45 @@ typedef long long int ll;
 #define nd second
 #define nl '\n'
 #define MOD 1000000007
-
-void sol(int tc) {
-    int n;
-    cin >> n;
-    vi a(n);
-    umii mp;
-    l (i, n) {
-        cin >> a[i];
-        mp[a[i]]++;
-    }
-    int m = n - 2;
-    int sq = sqrt(m);
-    if (sq * sq == (m) && mp[sq] >= 2) {
-        cout << sq << spc << sq << nl;
-        return;
-    }
-    ls (i, 1, sqrt(m)) {
-        if ((m % i) == 0) {
-            if (mp[i] > 0 && mp[m / i] > 0) {
-                cout << i << spc << m / i << nl;
-                return;
-            }
+bool isPrime(int n) {
+    if (n <= 1) return false;       
+    if (n <= 3) return true;      
+    if (n % 2 == 0 || n % 3 == 0) return false; 
+    for (int i = 5; i * i <= n; i += 6) {
+        if (n % i == 0 || n % (i + 2) == 0) {
+            return false;
         }
     }
 
+    return true;
+}
+void sol(int tc) {
+    int n;
+    cin >> n;
+    vi o, e, p;
+    if (n <= 4) {
+        cout << -1 << nl;
+        return;
+    }
+    ls (i, 1, n) {
+        if (i % 2) o.pb(i);
+        else e.pb(i);
+    }
+    int i = 1;
+    while (isPrime(o[o.size() - 1] + e[0]) && i < e.size()) {
+        swap(e[0], e[i]);
+        i++;
+    }
 
+    if (isPrime(o[o.size() - 1] + e[0])) {
+        cout << -1 << nl;
+        return;
+    }   
+
+    p.insert(p.end(), all(o));
+    p.insert(p.end(), all(e));
+    outv(p);
+    cout << nl;
 }
 
 int main() {
