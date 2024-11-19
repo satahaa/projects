@@ -25,45 +25,56 @@ typedef long long int ll;
 #define nd second
 #define nl '\n'
 #define MOD 1000000007
-bool isPrime(int n) {
-    if (n <= 1) return false;       
-    if (n <= 3) return true;      
-    if (n % 2 == 0 || n % 3 == 0) return false; 
-    for (int i = 5; i * i <= n; i += 6) {
-        if (n % i == 0 || n % (i + 2) == 0) {
-            return false;
-        }
-    }
 
-    return true;
-}
 void sol(int tc) {
-    int n;
-    cin >> n;
-    vi o, e, p;
-    if (n <= 4) {
-        cout << -1 << nl;
-        return;
-    }
-    ls (i, 1, n) {
-        if (i % 2) o.pb(i);
-        else e.pb(i);
-    }
-    int i = 1;
-    while (isPrime(o[o.size() - 1] + e[0]) && i < e.size()) {
-        swap(e[0], e[i]);
-        i++;
-    }
+    int n; // Number of integers in the current test case
+        cin >> n;
+        
+        map<int, int> freq; // Map to store the frequency of each number
+        vector<int> values; // Unique values with frequency >= 2
+        
+        for (int i = 0; i < n; ++i) {
+            int x;
+            cin >> x;
+            freq[x]++;
+        }
+        
+        // Collect numbers that appear at least twice
+        for (const auto& [key, count] : freq) {
+            if (count >= 2) {
+                values.push_back(key);
+            }
+        }
+        
+        if (values.size() < 2) {
+            // Not enough unique coordinates to form a rectangle
+            cout << "NO\n";
+            return;
+        }
+        
+        // Sort values to maximize area
+        sort(values.begin(), values.end());
+        
+        double max_ratio = 1e9; // To minimize the ratio for an optimal rectangle
+        int x1 = 0, x2 = 0; // To store the optimal coordinates
 
-    if (isPrime(o[o.size() - 1] + e[0])) {
-        cout << -1 << nl;
-        return;
-    }   
-
-    p.insert(p.end(), all(o));
-    p.insert(p.end(), all(e));
-    outv(p);
-    cout << nl;
+        // Find the best pair of values that minimizes the ratio of length to width
+        for (size_t i = 1; i < values.size(); ++i) {
+            int l1 = values[i - 1];
+            int l2 = values[i];
+            double ratio = (2.0 * (l2 + l1)) / (l2 - l1);
+            
+            if (ratio < max_ratio) {
+                max_ratio = ratio;
+                x1 = l1;
+                x2 = l2;
+            }
+        }
+        
+        // Output the rectangle with maximum area
+        cout << "YES\n";
+        cout << x1 << " " << x1 << " " << x2 << " " << x2 << " "
+             << x1 << " " << x2 << " " << x2 << " " << x1 << "\n";
 }
 
 int main() {
