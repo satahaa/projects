@@ -27,54 +27,25 @@ typedef long long int ll;
 #define MOD 1000000007
 
 void sol(int tc) {
-    int n; // Number of integers in the current test case
-        cin >> n;
-        
-        map<int, int> freq; // Map to store the frequency of each number
-        vector<int> values; // Unique values with frequency >= 2
-        
-        for (int i = 0; i < n; ++i) {
-            int x;
-            cin >> x;
-            freq[x]++;
-        }
-        
-        // Collect numbers that appear at least twice
-        for (const auto& [key, count] : freq) {
-            if (count >= 2) {
-                values.push_back(key);
-            }
-        }
-        
-        if (values.size() < 2) {
-            // Not enough unique coordinates to form a rectangle
-            cout << "NO\n";
+    int n, k;
+    cin >> n >> k;
+    vi a(n);
+    inpv(a);
+    sort(all(a), greater<ll>());
+    ll cur = 0;         
+
+    l (i, n) {
+        cur += a[i];
+        if (cur == k) {
+            cout << 0 << nl;
             return;
         }
-        
-        // Sort values to maximize area
-        sort(values.begin(), values.end());
-        
-        double max_ratio = 1e9; // To minimize the ratio for an optimal rectangle
-        int x1 = 0, x2 = 0; // To store the optimal coordinates
-
-        // Find the best pair of values that minimizes the ratio of length to width
-        for (size_t i = 1; i < values.size(); ++i) {
-            int l1 = values[i - 1];
-            int l2 = values[i];
-            double ratio = (2.0 * (l2 + l1)) / (l2 - l1);
-            
-            if (ratio < max_ratio) {
-                max_ratio = ratio;
-                x1 = l1;
-                x2 = l2;
-            }
+        if (cur > k) {
+            cout << k - (cur - a[i]) << nl;
+            return;
         }
-        
-        // Output the rectangle with maximum area
-        cout << "YES\n";
-        cout << x1 << " " << x1 << " " << x2 << " " << x2 << " "
-             << x1 << " " << x2 << " " << x2 << " " << x1 << "\n";
+    }
+    cout << k - cur << nl;
 }
 
 int main() {
