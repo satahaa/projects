@@ -27,25 +27,28 @@ typedef long long int ll;
 #define MOD 1000000007
 
 void sol(int tc) {
-    int n, k;
-    cin >> n >> k;
-    vi a(n);
-    inpv(a);
-    sort(all(a), greater<ll>());
-    ll cur = 0;         
+    int n;
+    cin >> n;
+    vi v(n);
+    ll sum = 0;
 
-    l (i, n) {
-        cur += a[i];
-        if (cur == k) {
-            cout << 0 << nl;
-            return;
-        }
-        if (cur > k) {
-            cout << k - (cur - a[i]) << nl;
-            return;
-        }
+    l (i, n)
+    {
+        cin >> v[i];
+        sum += v[i];
     }
-    cout << k - cur << nl;
+    
+    ll avg = sum / n;
+
+    for (int i = 1; i < n - 1; i++)
+    {
+        ll x = v[i  - 1] - avg;
+        v[i - 1] -= x;
+        v[i + 1] += x;
+
+    }
+    if (v[n - 1] == avg && v[n - 2] == avg) YES;
+    else NO;
 }
 
 int main() {
