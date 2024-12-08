@@ -27,23 +27,34 @@ typedef long long int ll;
 #define MOD 1000000007
 
 void sol(int tc) {
-    int n;
-    cin >> n;
-    
-    ll sum = 0;
-    ll cnt = 0; 
+    int n, k;
+    cin >> n >> k;
 
-    l(i, n) {
-        int k;
-        cin >> k;
-        sum += k;
+    vi v(n);
+    inpv(v);
 
-        int a = static_cast<int>(sqrt(sum)); 
+    vector<bool> b(n, true);
 
-        if (sum == a * a and a % 2)
-            cnt++;
+    l (i, n)
+    {
+        if (b[i])
+            ls (j, i + 1, n - 1)
+            {
+                if (abs(v[i] - v[j]) % k == 0)
+                {
+                    b[i] = false;
+                    b[j] = false;
+                }
+            }
     }
-    cout << cnt << nl;
+    l (i, n)
+        if (b[i]) 
+        {
+            YES;
+            cout << i + 1 << nl;
+            return;
+        }
+    NO;
 }
 
 int main() {
