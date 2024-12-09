@@ -12,7 +12,7 @@ typedef long long int ll;
 #define l(i, n) for (int i = 0; i < n; i++)
 #define inpv(v) for (auto &val : v) cin >> val
 #define outm(m) for (auto &[fst, snd] : m)
-#define outv(v) for (auto &val : v) cout << val << ' '
+#define outv(v) for (auto &val : v) cout << val << spc
 #define all(x) x.begin(), x.end()
 #define rall(x) x.rbegin(), x.rend()
 #define Case cout << "Case " << tc << ": ";
@@ -29,9 +29,22 @@ typedef long long int ll;
 void sol(int tc) {
     int n;
     cin >> n;
+    vi v(n);
+    inpv(v);
+    vi ans;
 
-    if (n % 2) cout << "Kosuke" << nl;
-    else cout << "Sakurako" << nl;
+    ans.pb(v[0]);
+    ls (i, 1, n - 1)
+    {
+        if (v[i - 1] > v[i])
+            ans.pb(v[i] - 1);
+        if (ans[ans.size() - 1] <= 0) 
+            ans[ans.size() - 1] = 1;
+        ans.pb(v[i]);
+    }
+    cout << ans.size() << nl;
+    outv(ans);
+    cout << nl;
 }
 
 int main() {
