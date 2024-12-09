@@ -30,18 +30,8 @@ void sol(int tc) {
     int n;
     cin >> n;
 
-    int k = 0, cnt = 0, i = 0;
-
-    while (k <= n)
-    {
-        k += -1 * (2 * i - 1);
-        cnt++; 
-    }
-    cnt--;
-
-    if (cnt % 2) cout << "Kosuke" << nl;
+    if (n % 2) cout << "Kosuke" << nl;
     else cout << "Sakurako" << nl;
-
 }
 
 int main() {
