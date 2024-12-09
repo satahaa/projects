@@ -29,13 +29,19 @@ typedef long long int ll;
 void sol(int tc) {
     int n;
     cin >> n;
-    int k = 1, cnt = 1;
-    while (k < n)
+
+    int k = 0, cnt = 0, i = 0;
+
+    while (k <= n)
     {
-        k = (k + 1) * 2;
-        cnt++;
+        k += -1 * (2 * i - 1);
+        cnt++; 
     }
-    cout << cnt << nl;
+    cnt--;
+
+    if (cnt % 2) cout << "Kosuke" << nl;
+    else cout << "Sakurako" << nl;
+
 }
 
 int main() {
