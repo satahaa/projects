@@ -27,34 +27,15 @@ typedef long long int ll;
 #define MOD 1000000007
 
 void sol(int tc) {
-    int n, k;
-    cin >> n >> k;
-
-    vi v(n);
-    inpv(v);
-
-    vector<bool> b(n, true);
-
-    l (i, n)
+    int n;
+    cin >> n;
+    int k = 1, cnt = 1;
+    while (k < n)
     {
-        if (b[i])
-            ls (j, i + 1, n - 1)
-            {
-                if (abs(v[i] - v[j]) % k == 0)
-                {
-                    b[i] = false;
-                    b[j] = false;
-                }
-            }
+        k = (k + 1) * 2;
+        cnt++;
     }
-    l (i, n)
-        if (b[i]) 
-        {
-            YES;
-            cout << i + 1 << nl;
-            return;
-        }
-    NO;
+    cout << cnt << nl;
 }
 
 int main() {
