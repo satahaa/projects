@@ -27,18 +27,7 @@ typedef long long int ll;
 #define MOD 1000000007
 
 void sol(int tc) {
-    int n, k;
-    cin >> n >> k;
-    vi v(n);
-    inpv(v);
 
-    if (k >= 2 or is_sorted(all(v))) {
-        YES;
-        return;
-    }
-    NO;
-
-    return;
 }
 
 int main() {
@@ -51,5 +40,5 @@ int main() {
     for (int i = 1; i <= tc; i++) {
         sol(i);
     }
-    return 0;
+    exit(EXIT_SUCCESS);
 }

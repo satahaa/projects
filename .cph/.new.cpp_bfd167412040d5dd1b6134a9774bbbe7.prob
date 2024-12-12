@@ -1,1 +1,0 @@
-{"name":"Local: new","url":"e:\\vscode\\new.cpp","tests":[{"id":1720169177241,"input":"8\n","output":"Yes"},{"id":1720169225765,"input":"2","output":"No"},{"id":1720169232625,"input":"9999674","output":"Yes"},{"id":1720169243818,"input":"0","output":"No"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\vscode\\new.cpp","group":"local","local":true}
