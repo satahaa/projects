@@ -27,24 +27,18 @@ typedef long long int ll;
 #define MOD 1000000007
 
 void sol(int tc) {
-    int n;
-    cin >> n;
+    int n, k;
+    cin >> n >> k;
     vi v(n);
     inpv(v);
-    vi ans;
 
-    ans.pb(v[0]);
-    ls (i, 1, n - 1)
-    {
-        if (v[i - 1] > v[i])
-            ans.pb(v[i] - 1);
-        if (ans[ans.size() - 1] <= 0) 
-            ans[ans.size() - 1] = 1;
-        ans.pb(v[i]);
+    if (k >= 2 or is_sorted(all(v))) {
+        YES;
+        return;
     }
-    cout << ans.size() << nl;
-    outv(ans);
-    cout << nl;
+    NO;
+
+    return;
 }
 
 int main() {
