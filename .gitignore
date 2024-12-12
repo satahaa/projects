@@ -1,0 +1,29 @@
+# Ignore node_modules
+node_modules/
+
+# Ignore log files
+*.log
+
+# Ignore compiled files
+*.class
+*.o
+*.so
+*.dll
+*.exe
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Build files
+build/
+*.o
+*.out
+
+# CLion settings
+.idea/
+*.iml
+
+# VS Code settings
+.vscode/
+.cph/
