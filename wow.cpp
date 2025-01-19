@@ -28,22 +28,32 @@ typedef long long int ll;
 #define MAX 1000005
 
 void sol(int tc) {
-    int a, b, d, e;
-    cin >> a >> b >> d >> e;
-    int m = 0;
+    int n, k;
+    cin >> n >> k;
+    vector<int> a(n);
+    unordered_map<int, int> freq;
  
-    for (int c = -200; c <= 200; ++c) {
-        vector<int> arr = {a, b, c, d, e};
-        int f = 0;
- 
-        for (int i = 0; i <= 2; ++i)
-            if (arr[i] + arr[i + 1] == arr[i + 2])
-                    f++;
- 
-        m = max(m, f);
+    for (int &x : a) {
+        cin >> x;
+        freq[x]++;
     }
  
-    cout << m << endl;
+    int s = 0;
+    for (int x : a) {
+        int y = k - x;
+        if (freq[x] > 0 && freq[y] > 0) {
+            if (x == y && freq[x] > 1) {
+                s++;
+                freq[x] -= 2;
+            } else if (x != y) {
+                s++;
+                freq[x]--;
+                freq[y]--;
+            }
+        }
+    }
+ 
+    cout << s << nl;
 
 }
 int main(){
