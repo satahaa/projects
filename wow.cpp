@@ -25,12 +25,37 @@ typedef long long int ll;
 #define nd second
 #define nl '\n'
 #define MOD 1000000007
+#define MAX 1000005
 
 void sol(int tc) {
+    int n, m;
+    cin >> n >> m;
+
+    vector<vi> v(n, vi(m));
+
+    for (auto &a : v) 
+    {
+        inpv(a);
+        sort(all(a));
+    }
+    mii mp;
+    l (i, n)
+    {
+        l (j, m - 1)
+            if (v[i][j + 1] - v[i][j] != n)
+            {
+                cout << -1 << nl;
+                return;
+            }
+        mp[v[i][0]] = i + 1;
+    }
+
+    outm(mp)
+        cout << snd << spc;
+    cout << nl;
 
 }
-
-int main() {
+int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
     cout.tie(nullptr);
@@ -40,5 +65,5 @@ int main() {
     for (int i = 1; i <= tc; i++) {
         sol(i);
     }
-    exit(EXIT_SUCCESS);
+    return 0;
 }
