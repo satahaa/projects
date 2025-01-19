@@ -28,31 +28,22 @@ typedef long long int ll;
 #define MAX 1000005
 
 void sol(int tc) {
-    int n, m;
-    cin >> n >> m;
-
-    vector<vi> v(n, vi(m));
-
-    for (auto &a : v) 
-    {
-        inpv(a);
-        sort(all(a));
+    int a, b, d, e;
+    cin >> a >> b >> d >> e;
+    int m = 0;
+ 
+    for (int c = -200; c <= 200; ++c) {
+        vector<int> arr = {a, b, c, d, e};
+        int f = 0;
+ 
+        for (int i = 0; i <= 2; ++i)
+            if (arr[i] + arr[i + 1] == arr[i + 2])
+                    f++;
+ 
+        m = max(m, f);
     }
-    mii mp;
-    l (i, n)
-    {
-        l (j, m - 1)
-            if (v[i][j + 1] - v[i][j] != n)
-            {
-                cout << -1 << nl;
-                return;
-            }
-        mp[v[i][0]] = i + 1;
-    }
-
-    outm(mp)
-        cout << snd << spc;
-    cout << nl;
+ 
+    cout << m << endl;
 
 }
 int main(){
