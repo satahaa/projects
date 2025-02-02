@@ -7,8 +7,8 @@ typedef long long int ll;
 #define umii unordered_map<ll, ll>
 #define si set<ll>
 #define usi unordered_set<ll>
-#define ls(i, s, n) for (int i = s; i <= n; i++)
-#define rl(i, s, n) for (int i = s; i >= n; i--)
+#define ls(i, s, n) for (ll i = s; i <= n; i++)
+#define rl(i, s, n) for (ll i = s; i >= n; i--)
 #define l(i, n) for (int i = 0; i < n; i++)
 #define inpv(v) for (auto &val : v) cin >> val
 #define outm(m) for (auto &[fst, snd] : m)
@@ -27,44 +27,50 @@ typedef long long int ll;
 #define MOD 1000000007
 #define MAX 1000005
 
-void sol(int tc) {
+void sol(int t)
+{    
     int n, k;
     cin >> n >> k;
-    vector<int> a(n);
-    unordered_map<int, int> freq;
- 
-    for (int &x : a) {
-        cin >> x;
-        freq[x]++;
-    }
- 
-    int s = 0;
-    for (int x : a) {
-        int y = k - x;
-        if (freq[x] > 0 && freq[y] > 0) {
-            if (x == y && freq[x] > 1) {
-                s++;
-                freq[x] -= 2;
-            } else if (x != y) {
-                s++;
-                freq[x]--;
-                freq[y]--;
+    vi v(n);
+    inpv(v);
+    vi a;
+    if (k < n)
+    {
+        for (int i = 1; i < n - (k - 2); i++)
+            if (v[i] != 1)
+            {
+                cout << 1 << nl;
+                return;
             }
-        }
+        cout << 2 << nl;
+        return;
     }
- 
-    cout << s << nl;
+    else
+    {
+        for (int i = 1; i < n; i += 2)
+            a.pb(v[i]);
 
+        l (i, a.size())
+            if (a[i] != i + 1)
+            {
+                cout << i + 1 << nl;
+                return;
+            }
+        cout << (k / 2) + 1 << nl;
+        return;
+    }
 }
-int main(){
+
+int main()
+{
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
     cout.tie(nullptr);
-
+ 
     int tc = 1;
     cin >> tc;
-    for (int i = 1; i <= tc; i++) {
+    for (int i = 1; i <= tc; i++) 
         sol(i);
-    }
+
     return 0;
 }
