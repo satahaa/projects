@@ -29,36 +29,24 @@ typedef long long int ll;
 
 void sol(int t)
 {    
-    int n, k;
-    cin >> n >> k;
-    vi v(n);
-    inpv(v);
-    vi a;
-    if (k < n)
+    int n;
+    cin >> n;
+    si s, u;
+    l(i, n)
     {
-        for (int i = 1; i < n - (k - 2); i++)
-            if (v[i] != 1)
-            {
-                cout << 1 << nl;
-                return;
-            }
-        cout << 2 << nl;
-        return;
+        int x;
+        cin >> x;
+        s.insert(x);
     }
-    else
+    l(i, n)
     {
-        for (int i = 1; i < n; i += 2)
-            a.pb(v[i]);
-
-        l (i, a.size())
-            if (a[i] != i + 1)
-            {
-                cout << i + 1 << nl;
-                return;
-            }
-        cout << (k / 2) + 1 << nl;
-        return;
+        int x;
+        cin >> x;
+        u.insert(x);
     }
+    if (s.size() + u.size() > 3)
+        YES;
+    else NO;
 }
 
 int main()
