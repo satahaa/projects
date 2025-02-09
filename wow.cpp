@@ -31,32 +31,30 @@ void sol(int t)
 {    
     int n, m;
     cin >> n >> m;
-    vi a(n), b(n);
-    l(i, n) {
-        ll s = 0, sc = 0;
-        l(j, m) {
-            int x;
-            cin >> x;
-            s += x;
-            sc += s;
-        }
-        a[i] = s;
-        b[i] = sc;
+    vi a(n);
+    inpv(a);
+    int k; 
+    cin >> k;
+    
+    bool p = true, q = true;
+    
+    for (int i = 1; i < n; i++){
+        bool s = false, t = false;
+        
+        if (p && a[i - 1] <= a[i]) s = true;
+        if (q && (k - a[i - 1]) <= a[i]) s = true;
+        
+        if (p && a[i - 1] <= (k - a[i])) t = true;
+        if (q && a[i] <= a[i - 1]) t = true;
+        
+        p = s;
+        q = t;
     }
     
-    ll k = 0;
-    l(i, n)
-        k += b[i];
-    
-    vi tot = a;
-    sort(all(tot), greater<ll>());
-    ll ans = 0;
-    l(i, n)
-        ans += (ll)(n - 1 - i) * tot[i];
-    
-    ans *= m;
-    
-    cout << k + ans << nl;
+    if (p || q)
+        YES;
+    else
+        NO;
 }
 
 int main()
