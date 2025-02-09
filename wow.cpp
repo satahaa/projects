@@ -29,24 +29,20 @@ typedef long long int ll;
 
 void sol(int t)
 {    
-    int n;
-    cin >> n;
-    si s, u;
-    l(i, n)
+    string s;
+    cin >> s;
+    int n = s.size();
+    int cnt = 0;
+
+    l (i, n - 1)
     {
-        int x;
-        cin >> x;
-        s.insert(x);
+        if (s[i] == s[i + 1])
+        {
+            cout << 1 << nl;
+            return;
+        }
     }
-    l(i, n)
-    {
-        int x;
-        cin >> x;
-        u.insert(x);
-    }
-    if (s.size() + u.size() > 3)
-        YES;
-    else NO;
+    cout << n << nl;
 }
 
 int main()
