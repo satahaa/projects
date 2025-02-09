@@ -29,32 +29,17 @@ typedef long long int ll;
 
 void sol(int t)
 {    
-    int n, m;
-    cin >> n >> m;
-    vi a(n);
-    inpv(a);
-    int k; 
-    cin >> k;
-    
-    bool p = true, q = true;
-    
-    for (int i = 1; i < n; i++){
-        bool s = false, t = false;
-        
-        if (p && a[i - 1] <= a[i]) s = true;
-        if (q && (k - a[i - 1]) <= a[i]) s = true;
-        
-        if (p && a[i - 1] <= (k - a[i])) t = true;
-        if (q && a[i] <= a[i - 1]) t = true;
-        
-        p = s;
-        q = t;
+    string s;
+    cin >> s;
+    int n = s.size();
+    if (n <= 2) 
+    {
+        cout << 'i' << nl;
+        return;
     }
-    
-    if (p || q)
-        YES;
-    else
-        NO;
+        s.erase(s.begin() + n - 2, s.end());
+    s += 'i';
+    cout << s << nl;
 }
 
 int main()
