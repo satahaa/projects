@@ -29,20 +29,34 @@ typedef long long int ll;
 
 void sol(int t)
 {    
-    string s;
-    cin >> s;
-    int n = s.size();
-    int cnt = 0;
-
-    l (i, n - 1)
-    {
-        if (s[i] == s[i + 1])
-        {
-            cout << 1 << nl;
-            return;
+    int n, m;
+    cin >> n >> m;
+    vi a(n), b(n);
+    l(i, n) {
+        ll s = 0, sc = 0;
+        l(j, m) {
+            int x;
+            cin >> x;
+            s += x;
+            sc += s;
         }
+        a[i] = s;
+        b[i] = sc;
     }
-    cout << n << nl;
+    
+    ll k = 0;
+    l(i, n)
+        k += b[i];
+    
+    vi tot = a;
+    sort(all(tot), greater<ll>());
+    ll ans = 0;
+    l(i, n)
+        ans += (ll)(n - 1 - i) * tot[i];
+    
+    ans *= m;
+    
+    cout << k + ans << nl;
 }
 
 int main()
