@@ -27,19 +27,25 @@ typedef long long int ll;
 #define MOD 1000000007
 #define MAX 1000005
 
-void sol(int t)
-{    
-    string s;
-    cin >> s;
-    int n = s.size();
-    if (n <= 2) 
+void sol(int tc)
+{
+    int n; cin >> n;
+    string s; cin >> s;
+    bool f = false; int cnt = 0;
+    l (i, n)
     {
-        cout << 'i' << nl;
-        return;
+        if (s[i] == '1' && !f)
+        {
+            f = true;
+            cnt++;
+        }
+        if (s[i] != s[i + 1] && f)
+            cnt++;
     }
-        s.erase(s.begin() + n - 2, s.end());
-    s += 'i';
-    cout << s << nl;
+    if (f)
+        cout << cnt - 1 << nl;
+    else cout << cnt << nl;
+
 }
 
 int main()
